@@ -14,7 +14,12 @@ function App() {
     if (!scanned) {
       scanned = true;
       try {
-        const resp = await axios.get(URL + "/codes/" + code);
+        const resp = await axios.get(URL + "/codes/" + code, {
+          auth: {
+            username: "labor",
+            password: "D0rnbirn!23",
+          },
+        });
         console.log(resp);
         if (resp.status === 200) {
           toast.success("Erfolgreich hochgeladen");
