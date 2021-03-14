@@ -64,7 +64,7 @@ function App() {
           <img className="icon" src="swap.svg" />
         </div>
         <QrReader
-          delay={300}
+          delay={100}
           onError={handleError}
           onScan={handleScan}
           style={{ width: "100%" }}
