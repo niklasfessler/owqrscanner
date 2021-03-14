@@ -67,7 +67,7 @@ function App() {
           delay={100}
           onError={handleError}
           onScan={handleScan}
-          style={{ width: "100%" }}
+          style={{ width: width, heigth: width }}
           facingMode={camera}
         />
       </div>
