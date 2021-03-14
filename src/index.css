@@ -12,9 +12,7 @@ code {
     monospace;
 }
 .iconcontainer {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+
 }
 .icon {
   width: 28px;

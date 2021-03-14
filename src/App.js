@@ -3,15 +3,15 @@ import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import QrReader from "react-qr-scanner";
 import InputCode from "./InputCode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import QrReader from "react-qr-reader";
 
 const URL = "https://labscan.iws24.com";
 
 function App() {
   let scanned = false;
-  const [camera, setCamera] = useState("rear");
+  const [camera, setCamera] = useState("environment");
   const requestQR = async (code) => {
     if (!scanned) {
       scanned = true;
@@ -50,24 +50,24 @@ function App() {
   const width = window.innerWidth > 600 ? 600 : window.innerWidth;
   return (
     <div className="App">
-      <div style={{ position: "relative", widows: "100%", maxWidth: 600 }}>
+      <div style={{ widows: "100%", maxWidth: 600 }}>
         <div
           className="iconcontainer"
           onClick={() => {
-            if (camera == "rear") {
-              setCamera("front");
+            if (camera == "user") {
+              setCamera("environment");
             } else {
-              setCamera("rear");
+              setCamera("user");
             }
           }}
         >
           <img className="icon" src="swap.svg" />
         </div>
         <QrReader
-          delay={1500}
-          style={{ width, height: width, objectFit: "cover" }}
+          delay={300}
           onError={handleError}
           onScan={handleScan}
+          style={{ width: "100%" }}
           facingMode={camera}
         />
       </div>
