@@ -13,6 +13,7 @@
 .input {
   margin: 15px;
   width: calc(100% - 60px);
+  max-width: 570px;
   padding: 0px;
   /* border: 0; */
   padding: 12px;

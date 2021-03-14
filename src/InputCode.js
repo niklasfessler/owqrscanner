@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const InputCode = ({ requestQR }) => {
   const [code, setCode] = useState("");
   return (
-    <>
+    <div style={{width: '100%', maxWidth: 600}}>
       <input
         className="input"
         placeholder="Code manuell eingeben"
@@ -25,7 +25,7 @@ const InputCode = ({ requestQR }) => {
       >
         Senden
       </button>
-    </>
+    </div>
   );
 };
 

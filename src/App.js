@@ -5,11 +5,13 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import QrReader from "react-qr-scanner";
 import InputCode from "./InputCode";
+import { useState } from "react";
 
 const URL = "https://labscan.iws24.com";
 
 function App() {
   let scanned = false;
+  const [camera, setCamera] = useState("rear");
   const requestQR = async (code) => {
     if (!scanned) {
       scanned = true;
@@ -48,12 +50,27 @@ function App() {
   const width = window.innerWidth > 600 ? 600 : window.innerWidth;
   return (
     <div className="App">
-      <QrReader
-        delay={1500}
-        style={{ width, height: width, objectFit: "cover" }}
-        onError={handleError}
-        onScan={handleScan}
-      />
+      <div style={{ position: "relative", widows: "100%", maxWidth: 600 }}>
+        <div
+          className="iconcontainer"
+          onClick={() => {
+            if (camera == "rear") {
+              setCamera("front");
+            } else {
+              setCamera("rear");
+            }
+          }}
+        >
+          <img className="icon" src="swap.svg" />
+        </div>
+        <QrReader
+          delay={1500}
+          style={{ width, height: width, objectFit: "cover" }}
+          onError={handleError}
+          onScan={handleScan}
+          facingMode={camera}
+        />
+      </div>
       <h2 style={{ marginLeft: 15 }}>Code manuell eingeben</h2>
       <InputCode requestQR={requestQR} />
       <ToastContainer />
